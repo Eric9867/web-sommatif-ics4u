@@ -1,0 +1,135 @@
+:root {
+  --theme-monotone1: #1C1F33;
+  --theme-monotone2: #DBD2E0;
+
+  --theme-couleur1: #510009;
+  --theme-couleur2: #A63446;
+
+  --nav-height: 56px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+* {
+  font: 16px sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+article {
+  overflow-y: auto;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+footer {
+  text-align: center;
+  color: white;
+  background-color: var(--theme-monotone1);
+  height: 2em;
+  padding-bottom: 1em;
+}
+
+nav {
+  flex: 0 1 auto;
+  width: 100%;
+  background-color: var(--theme-monotone1);
+
+}
+
+nav ul {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+nav ul li {
+  /* mettre les elements de liste ensemble */
+  float: left;
+  list-style: none;
+  /* permet d'activer position absolue plus tard */
+  position: relative;
+  height: 100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
+
+nav ul li a {
+  display: inline-block;
+  text-decoration: none;
+  color: inherit;
+  padding: 0 16px;
+}
+
+nav ul li ul {
+  display: none;
+  /*positionner absolument par rapport au parent, ci-haut*/
+  position: absolute;
+  padding: 0px;
+  top: var(--nav-height);
+}
+
+nav ul li:hover ul {
+  display: block;
+}
+
+nav ul li ul li {
+  background-color: var(--theme-monotone2);
+}
+
+nav ul li ul li:last-child {
+  border-radius: 0 0 10px 10px;
+}
+
+nav ul li ul a {
+  padding: ;
+  width: 4em;
+  color: var(--theme-monotone1)
+}
+
+nav ul li:hover {
+  background-color: var(--theme-monotone2);
+  color: var(--theme-monotone1);
+}
+
+nav ul li ul a:hover {
+  background-color: var(--theme-monotone2);
+}
+
+.main-contenu {
+  flex: 1 1 auto;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.main-contenu article {
+  flex-grow: 4;
+}
+
+@keyframes page-entree-elargir {
+  from {
+    flex-grow: 0;
+  }
+
+  to {
+    flex-grow: 1;
+  }
+}
+
+.main-contenu div {
+  animation: page-entree-elargir 2s;
+  animation-fill-mode: forwards;
+  flex-grow: 1;
+  padding: 5px;
+}
