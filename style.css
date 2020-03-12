@@ -1,11 +1,12 @@
+@charset "UTF-8";
+
 :root {
-  --theme-monotone1: #1C1F33;
+  --theme-monotone1: #353436;
   --theme-monotone2: #DBD2E0;
+  --theme-monotone2-l: #c8c0cc;
 
   --theme-couleur1: #510009;
   --theme-couleur2: #A63446;
-
-  --nav-height: 56px;
 }
 
 html, body {
@@ -26,8 +27,6 @@ body {
 
 article {
   overflow-y: auto;
-  margin-left: 10%;
-  margin-right: 10%;
 }
 
 footer {
@@ -41,10 +40,59 @@ footer {
 nav {
   flex: 0 1 auto;
   width: 100%;
-  background-color: var(--theme-monotone1);
+  background-color: var(--theme-couleur1);
+}
+
+nav > div {
+  display: inline-block;
+}
+
+nav > div a {
+  text-decoration: none;
+  color: white;
+  display: inherit;
+  padding: 0.5em 1em;
+}
+
+nav > div > a {
+  font-size: 20px;
+}
+
+nav > div > a:hover {
+  background-color: var(--theme-couleur2);
 
 }
 
+/* Faire apparaître le menu déroulant lors du survol de l'élément correspondant de la barre de navigation */
+nav > div:hover > div {
+  display: block;
+  max-height: 200px;
+}
+
+/* Menu déroulant */
+nav > div > div {
+  position: absolute;
+  overflow: hidden;
+  transition: all 2s;
+  max-height: 0;
+}
+
+nav > div > div > a {
+  display: block;
+  background-color: var(--theme-monotone2);
+  color: var(--theme-monotone1)
+  min-width: 4em;
+}
+
+nav > div > div > a:last-child {
+  border-radius: 0 0 8px 8px;
+}
+
+nav > div > div > a:hover {
+  background-color: var(--theme-monotone2-l);
+}
+
+/*
 nav ul {
   padding: 0;
   margin: 0;
@@ -52,13 +100,13 @@ nav ul {
 }
 
 nav ul li {
-  /* mettre les elements de liste ensemble */
+  /* mettre les elements de liste ensemble /
   float: left;
   list-style: none;
-  /* permet d'activer position absolue plus tard */
+  /* permet d'activer position absolue plus tard /
   position: relative;
   height: 100%;
-  display:flex;
+  display:block;
   flex-direction: column;
   justify-content: center;
   color: white;
@@ -73,10 +121,9 @@ nav ul li a {
 
 nav ul li ul {
   display: none;
-  /*positionner absolument par rapport au parent, ci-haut*/
+  /*positionner absolument par rapport au parent, ci-haut/
   position: absolute;
   padding: 0px;
-  top: var(--nav-height);
 }
 
 nav ul li:hover ul {
@@ -105,6 +152,7 @@ nav ul li:hover {
 nav ul li ul a:hover {
   background-color: var(--theme-monotone2);
 }
+*/
 
 .main-contenu {
   flex: 1 1 auto;
@@ -132,4 +180,14 @@ nav ul li ul a:hover {
   animation-fill-mode: forwards;
   flex-grow: 1;
   padding: 5px;
+}
+
+/*nooooooo*/
+.cercle {
+  width: 48px;
+  height: 48px;
+  background-color: var(--theme-couleur2);
+  border-radius: 50%;
+  position: relative;
+  align-self: center;
 }

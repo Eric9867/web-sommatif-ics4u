@@ -5,30 +5,50 @@
 
     <link rel="stylesheet" href="style.css">
     <script defer type="text/javascript" src="script.js"></script>
+    <script type="text/javascript">
+      "use strict";
+      function loadTest(){
+        var fileReader = new FileReader();
+        fileReader.onload = function (e) {
+          var fileContents = document.querySelector('article');
+          //filecontents is a div in the html that displays the file.
+          fileContents.innerText = fileReader.result;
+        }
+        fileReader.readAsText("pendule.html");
+        //see the link above to see where the variable fileTobeRead comes from.
 
+
+
+      }
+    </script>
     <title>Titre</title>
   </head>
 
   <body>
-    <nav class="navbar">
-      <ul>
-        <li><a href="index.html" style="font:28px Georgia;">Acceuil</a></li>
-        <li><a href="#">Maths</a>
-          <ul>
-            <li><a href="#">MHF4U</a></li>
-            <li><a href="#">MCV4U</a></li>
-            <li><a href="#">AP</a></li>
-          </ul>
-        </li>
-        <li> <a href="#">Physique</a>
-          <ul>
-            <li><a href="#">SPH3U</a></li>
-            <li><a href="#">SPH4U</a></li>
-            <li><a href="#">AP</a></li>
-          </ul>
-        </li>
-        <li> <a href="#">Pour le fun!</a> </li>
-      </ul>
+    <nav>
+      <div>
+        <a href="index.html">Acceuil</a>
+      </div>
+      <div>
+        <a href="#">Maths</a>
+        <div>
+          <a href="#">MHF4U</a>
+          <a href="#">MCV4U</a>
+          <a href="#">AP</a>
+        </div>
+      </div>
+      <div>
+        <a href="#">Physique</a>
+        <div>
+          <a href="pendule.html" target="">Pendule</a>
+          <a href="#" onclick="loadTest()">SPH3U</a>
+          <a href="#">SPH4U</a>
+          <a href="#">AP</a>
+        </div>
+      </div>
+      <div>
+        <a href="#">Pour le fun!</a>
+      </div>
     </nav>
 
     <div class="main-contenu">
