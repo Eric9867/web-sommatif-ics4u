@@ -4,23 +4,21 @@
     <meta charset="utf-8">
 
     <link rel="stylesheet" href="style.css">
-    <script defer type="text/javascript" src="script.js"></script>
     <script type="text/javascript">
       "use strict";
-      function loadTest(){
-        var fileReader = new FileReader();
-        fileReader.onload = function (e) {
-          var fileContents = document.querySelector('article');
-          //filecontents is a div in the html that displays the file.
-          fileContents.innerText = fileReader.result;
-        }
-        fileReader.readAsText("pendule.html");
-        //see the link above to see where the variable fileTobeRead comes from.
-
-
-
+      function loadTest(src){
+        fetch(src)
+          .then(res => res.text())
+          .then(txt => {
+            document.querySelector('article').innerHTML = txt;
+          })
+          .catch(err => {
+            console.log(`Téléchargment dynamique de ${src} échouée: ${err}`);
+          });
       }
+
     </script>
+    <script defer type="text/javascript" src="pendule.js" charset="utf-8"></script>
     <title>Titre</title>
   </head>
 
@@ -34,20 +32,22 @@
         <div>
           <a href="#">MHF4U</a>
           <a href="#">MCV4U</a>
-          <a href="#">AP</a>
+          <a href="#" onclick="loadTest('/math-ap.html')">AP</a>
         </div>
       </div>
       <div>
         <a href="#">Physique</a>
         <div>
-          <a href="pendule.html" target="">Pendule</a>
-          <a href="#" onclick="loadTest()">SPH3U</a>
+          <a href="#" onclick="loadTest('/pendule.html')">SPH3U</a>
           <a href="#">SPH4U</a>
           <a href="#">AP</a>
         </div>
       </div>
       <div>
         <a href="#">Pour le fun!</a>
+      </div>
+      <div>
+        <a href="http://mathosource.org/webwork2" target="_blank">WebWork</a>
       </div>
     </nav>
 
@@ -56,12 +56,11 @@
         Contenu à gauche.
       </div>
       <article>
-        <p>Paragraphe 1.</p>
-        <p>Paragraphe 2.</p>
-        <p>Paragraphe 1.</p>
-        <p>Paragraphe 2.</p>
+        <h2>Sous-titre</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>kasjdfhkasdjf</p>
         <div id="quiz"></div>
-        <button id="soumettre">Soumettre le Quiz</button>
+          <button id="soumettre">Soumettre le Quiz</button>
         <div id="resultats"></div>
       </article>
       <div>
@@ -70,7 +69,7 @@
     </div>
 
     <footer>
-      <p>Du texte pour évaluer l'efficacité du footer. &copy; 2020</p>
+      <p>ICS4U SCG &copy; 2020</p>
     </footer>
   </body>
 </html>
